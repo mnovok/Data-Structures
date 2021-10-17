@@ -1,0 +1,5 @@
+4
+Marija	Maric	15
+Ivan	Ivic	10
+Ana	Anic	20
+Leo	Leic	14

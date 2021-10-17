@@ -1,0 +1,4 @@
+﻿  Source.c
+C:\Users\Marija\Documents\STRUKTURE\LAB1\LAB1\Source.c(117,39): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Marija\Documents\STRUKTURE\LAB1\LAB1\Source.c(112,1): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  LAB1.vcxproj -> C:\Users\Marija\Documents\STRUKTURE\LAB1\Debug\LAB1.exe
