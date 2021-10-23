@@ -1,0 +1,9 @@
+# Visual studio files
+**/.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+
+# Bin
+**/Debug/
