@@ -18,22 +18,22 @@ typedef struct _Person
 
 } Person;
 
-int AddFirst(Position head, char* name, char* surname, int birthYear);			//dodaje na pocetak liste
-int AddLast(Position head, char* name, char* surname, int birthYear);			//dodaje na kraj liste
-int PrintList(Position first);													//ispisuje cijelu listu
-Position CreatePerson(char* name, char* surname, int birthYear);				//stvara novog studenta
-int InsertAfter(Position position, Position newPerson);							//dodaje nakon odredjene pozicije
-Position FindLast(Position head);												//trazi posljednjeg u listi
-Position FindBySurname(Position first, char* surname);							//samo pronalazak studenta
-Position FindBefore(Position first, Position current);							//trazi prethodnog
-int DeleteAfter(Position head, char* surname);									//brise po prezimenu
-int PrintStudent(Position person);												//ispis odredjenog elementa
-int AddPersonAfter(Position head, Position newPerson, char* surname);			//dodaje studenta nakon odredjenog elem.
-int AddPersonBefore(Position head, Position newPerson, char* surname);			//dodaje studenta prije odredjenog elem.
-int SortAdd(Position head, Position newPerson);									//sortirani unos studenta
-char* EnterFileName(void);														//unos naziva datoteke
-int WriteFile(Position first, char* fileName);									//ispisuje u datoteku
-int ReadFile(Position first, char* fileName);									//ucitava iz datoteke
+int AddFirst(Position head, char* name, char* surname, int birthYear);	//dodaje na pocetak liste
+int AddLast(Position head, char* name, char* surname, int birthYear);	//dodaje na kraj liste
+int PrintList(Position first);	//ispisuje cijelu listu
+Position CreatePerson(char* name, char* surname, int birthYear); //stvara novog studenta
+int InsertAfter(Position position, Position newPerson);	//dodaje nakon odredjene pozicije
+Position FindLast(Position head); //trazi posljednjeg u listi
+Position FindBySurname(Position first, char* surname);	//samo pronalazak studenta
+Position FindBefore(Position first, Position current);	//trazi prethodnog
+int DeleteAfter(Position head, char* surname);	//brise po prezimenu
+int PrintStudent(Position person);	//ispis odredjenog elementa
+int AddPersonAfter(Position head, Position newPerson, char* surname);//dodaje studenta nakon odredjenog elem.
+int AddPersonBefore(Position head, Position newPerson, char* surname);	//dodaje studenta prije odredjenog elem.
+int SortAdd(Position head, Position newPerson);	//sortirani unos studenta
+char* EnterFileName(void);	//unos naziva datoteke
+int WriteFile(Position first, char* fileName);	//ispisuje u datoteku
+int ReadFile(Position first, char* fileName); //ucitava iz datoteke
 
 
 int main(int argc, char** argv) {
