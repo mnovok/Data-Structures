@@ -18,22 +18,23 @@ typedef struct _Person
 
 } Person;
 
-int AddFirst(Position head, char* name, char* surname, int birthYear);	//dodaje na pocetak liste
-int AddLast(Position head, char* name, char* surname, int birthYear);	//dodaje na kraj liste
-int PrintList(Position first);	//ispisuje cijelu listu
-Position CreatePerson(char* name, char* surname, int birthYear); //stvara novog studenta
-int InsertAfter(Position position, Position newPerson);	//dodaje nakon odredjene pozicije
-Position FindLast(Position head); //trazi posljednjeg u listi
-Position FindBySurname(Position first, char* surname);	//samo pronalazak studenta
-Position FindBefore(Position first, Position current);	//trazi prethodnog
-int DeleteAfter(Position head, char* surname);	//brise po prezimenu
-int PrintStudent(Position person);	//ispis odredjenog elementa
+int AddFirst(Position head, char* name, char* surname, int birthYear);//dodaje na pocetak liste
+int AddLast(Position head, char* name, char* surname, int birthYear);//dodaje na kraj liste
+int PrintList(Position first);//ispisuje cijelu listu
+Position CreatePerson(char* name, char* surname, int birthYear);//stvara novog studenta
+int InsertAfter(Position position, Position newPerson);//dodaje nakon odredjene pozicije
+Position FindLast(Position head);//trazi posljednjeg u listi
+Position FindBySurname(Position first, char* surname);//samo pronalazak studenta
+Position FindBefore(Position first, Position current);//trazi prethodnog
+int DeleteAfter(Position head, char* surname);//brise po prezimenu
+int PrintStudent(Position person);//ispis odredjenog elementa
 int AddPersonAfter(Position head, Position newPerson, char* surname);//dodaje studenta nakon odredjenog elem.
-int AddPersonBefore(Position head, Position newPerson, char* surname);	//dodaje studenta prije odredjenog elem.
-int SortAdd(Position head, Position newPerson);	//sortirani unos studenta
-char* EnterFileName(void);	//unos naziva datoteke
-int WriteFile(Position first, char* fileName);	//ispisuje u datoteku
-int ReadFile(Position first, char* fileName); //ucitava iz datoteke
+int AddPersonBefore(Position head, Position newPerson, char* surname);//dodaje studenta prije odredjenog elem.
+int Sort(Position head);//sortirani unos studenta
+char* EnterFileName(void);//unos naziva datoteke
+int WriteFile(Position first, char* fileName);//ispisuje u datoteku
+int ReadFile(Position first, char* fileName);//ucitava iz datoteke
+
 
 
 int main(int argc, char** argv) {
@@ -53,7 +54,7 @@ int main(int argc, char** argv) {
 		system("cls"); //cisti cmd
 		PrintList(p);
 		printf("Odaberite zeljenu radnju za vezanu listu [0 - 9]:\n\n");
-		system("color F"); 
+		system("color F");
 		printf("\tIzlaz iz programa -- [ 0 ]\n");
 		printf("\tUnos studenta na pocetak liste -- [ 1 ]\n");
 		printf("\tUnos studenta na kraj liste -- [ 2 ]\n");
@@ -274,7 +275,7 @@ Position FindBefore(Position first, Position current)
 
 int PrintStudent(Position person)
 {
-	system("color C");
+	system("color A");
 	printf("\nZeljeni student je:\n");
 	printf("NAME: %s, SURNAME: %s, BIRTHYEAR: %d\n", person->name, person->surname, person->birthYear);
 	system("pause > nul");
@@ -328,13 +329,13 @@ int DeleteAfter(Position head, char* surname)
 			*/
 	}
 
-	if (!deleted) 
+	if (!deleted)
 	{
 		system("color C");
 		printf("Trazeni student ne postoji . . .\n");
 		system("pause > nul");
 	}
-	
+
 	return EXIT_SUCCESS;
 }
 
@@ -365,36 +366,31 @@ int AddPersonBefore(Position head, Position newPerson, char* surname)
 
 int SortAdd(Position head, Position newPerson)
 {
-	Position p = NULL; //prvi elem. liste
+	Position p = head; //prvi elem. liste
 	Position added = newPerson; //osoba koju dodajemo
-	Position current = NULL;//
-	Position previous = NULL; 
+	Position current = NULL; //trenutna pozicija
+	Position previous = NULL; //prethodnik (koristi za fju InsertAfter)
 
 	int swapped = 0;
 
-	for (p = head; p->next != NULL; p = p->next) {
-		
-		current = p->next;
-
-		if (strcmp(current->surname, added->surname) > 0)
+	while (p->next != NULL)
+	{
+		p = p->next;
+		if (strcmp(p->surname, added->surname) > 0)
 		{
-			previous = FindBefore(head, current);
-			previous->next = added;
-			added->next = current;
-			swapped = 1;
+			previous = FindBefore(head, p);
+			InsertAfter(previous, added);
+			system("color A");
+			printf("Student uspjesno dodan!\n");
+			system("pause > nul");
+			return EXIT_SUCCESS;
 		}
 	}
 
-	if (swapped)
-	{
-		system("color A");
-		printf("Student uspjesno sortiran!\n");
-		system("pause > nul");
-	}
-
-	else
-		AddLast(p, added->name, added->surname, added->birthYear); //neispunjen uvjet podrazumijeva umetanje na kraj
-
+	AddLast(p, added->name, added->surname, added->birthYear);
+	system("color A");
+	printf("Student uspjesno dodan!\n");
+	system("pause > nul");
 	return EXIT_SUCCESS;
 
 }
