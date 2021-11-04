@@ -34,6 +34,7 @@ int Sort(Position head);//sortirani unos studenta
 char* EnterFileName(void);//unos naziva datoteke
 int WriteFile(Position first, char* fileName);//ispisuje u datoteku
 int ReadFile(Position first, char* fileName);//ucitava iz datoteke
+int DeallocateList(Position head); //oslobadja zauzetu memoriju
 
 
 
@@ -164,6 +165,21 @@ int main(int argc, char** argv) {
 			break;
 		}
 	}
+
+	if (!DeallocateList(p)) //ukoliko memorija postoji
+	{
+		printf("Memorija uspjesno dealocirana!\n");
+		system("color A");
+		system("pause > nul");
+	}
+
+	else //ukoliko je lista prazna
+	{
+		printf("Memorija nije dealocirana. . .\n");
+		system("color C");
+		system("pause > nul");
+	}
+	
 
 	return EXIT_SUCCESS;
 }
@@ -465,4 +481,23 @@ int ReadFile(Position first, char* fileName)
 	system("pause > nul");
 
 	return EXIT_SUCCESS;
+}
+
+int DeallocateList(Position head)
+{
+	Position current = head;
+	Position temp = NULL;
+	
+	if (NULL != current->next) {
+		while (NULL != current->next)
+		{
+			temp = current->next;
+			current->next = temp->next;
+			free(temp);
+		}
+		return EXIT_SUCCESS; //uspjesno ukoliko lista postoji i prodje petlju
+	}
+
+	else
+		return EXIT_FAILURE; //neuspjesno ako je lista npr. prazna
 }
