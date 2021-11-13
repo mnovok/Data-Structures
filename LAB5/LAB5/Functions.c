@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 char* EnterFileName(void) 
 {
 	char* str = NULL;
@@ -66,7 +65,6 @@ int PushElement(Position head, double number)
 
 	if (!newElement)
 	{
-
 		system("color C");
 		perror("Ne moze se alocirati memorija!\n");
 		system("pause > nul");
@@ -138,16 +136,16 @@ int CalculatePostfix(Position head, char operation)
 			printf("Ne smije se dijeliti nulom. . . \n");
 			break;
 		}
-		PrintOperation(top_prev, top, result, operation);
 		result = top_prev / top;
+		PrintOperation(top_prev, top, result, operation);
 		break;
 
 	default:
 		system("color C");
 		printf("\nPOGRESKA! Ova verzija programa sadrzava samo osnovne operacije. . .\nPokusajte s nekom drugom datotekom.\n");
 		system("pause > nul");
-		ReenterFileName(head);
 		DeallocateStack(head);
+		ReenterFileName(head);
 		break;
 	}
 
