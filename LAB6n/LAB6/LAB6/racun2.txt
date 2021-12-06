@@ -1,0 +1,5 @@
+2021-07-09
+cola 3 6.99
+kruh 2 5.00
+biljeznica 5 12.00
+limun 1 2.99
