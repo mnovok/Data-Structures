@@ -1,5 +1,12 @@
-28-12-2021 21:56
-3 0
-Leon Mage 70 4 10 46
+28-12-2021 22:39
+0 0
+Nora Berserker 100 6 4 53
 Bewitched Bunny, Art/Villains/BewitchedBunny.txt 90 7 4 1
 Furious Fish, Art/Villains/FuriousFish.txt 70 5 5 2
+Malicious Monkey, Art/Villains/MaliciousMonkey.txt 80 8 2 3
+Tense Tiger, Art/Villains/TenseTiger.txt 85 8 6 4
+Deadly Deer, Art/Villains/DeadlyDeer.txt 75 6 8 5
+Wistful Wolf, Art/Villains/WistfulWolf.txt 82 7 7 6
+Obsessive Octopus, Art/Villains/ObsessiveOctopus.txt 80 8 8 7
+Sneaky Sheep, Art/Villains/SneakySheep.txt 90 5 8 8
+Crazy Camel, Art/Villains/CrazyCamel.txt 88 7 6 9

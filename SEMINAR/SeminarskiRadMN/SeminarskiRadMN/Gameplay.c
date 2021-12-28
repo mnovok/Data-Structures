@@ -138,7 +138,6 @@ int EnterWorld(Player currentPlayer, Save currentSaveHead, Villain currentVillai
 
                 }
             }
-
         }
         
         if (hasVillain <= 70) //pojavit ce se neprijatelj

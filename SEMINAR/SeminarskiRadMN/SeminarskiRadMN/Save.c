@@ -170,8 +170,8 @@ int WriteSaveIntoFile(Save currentSave, char* fileName) {
 	FILE* fp = NULL;
 
 	Player currentPlayer = currentSave->savedPlayer;
-	Villain villain1 = currentSave->savedVillains->next;
-	Villain villain2 = currentSave->savedVillains->next->next;
+	Villain villain = currentSave->savedVillains->next;
+	int i = 1;
 
 	fp = fopen(fileName, "w");
 
@@ -180,8 +180,12 @@ int WriteSaveIntoFile(Save currentSave, char* fileName) {
 		fprintf(fp, "%s\n", currentSave->name);
 		fprintf(fp, "%d %d\n", currentSave->savedInventory->next->index, currentSave->savedInventory->next->next->index);
 		fprintf(fp, "%s %s %d %d %d %d\n", currentPlayer->name, currentPlayer->class, currentPlayer->health, currentPlayer->attack, currentPlayer->defense, currentPlayer->luck);
-		fprintf(fp, "%s, %s %d %d %d %d\n", villain1->name, villain1->fileName, villain1->health, villain1->attack, villain1->defense, villain1->index);
-		fprintf(fp, "%s, %s %d %d %d %d", villain2->name, villain2->fileName, villain2->health, villain2->attack, villain2->defense, villain2->index);
+		while (i < 10)
+		{
+			fprintf(fp, "%s, %s %d %d %d %d\n", villain->name, villain->fileName, villain->health, villain->attack, villain->defense, villain->index);
+			i++;
+			villain = villain->next;
+		}
 	}
 
 	fclose(fp);
