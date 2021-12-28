@@ -1,0 +1,3 @@
+Gambler
+Takes half of either enemy or player's health. (50% chance for each)
+5

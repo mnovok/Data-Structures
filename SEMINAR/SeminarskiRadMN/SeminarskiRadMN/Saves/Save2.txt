@@ -1,0 +1,5 @@
+28-12-2021 20:55
+4 2
+Marija Human 30 2 1 73
+Bewitched Bunny, Art/Villains/BewitchedBunny.txt 90 7 4 1
+Furious Fish, Art/Villains/FuriousFish.txt 70 5 5 2

@@ -1,0 +1,3 @@
+Malicious Monkey
+Art/Villains/MaliciousMonkey.txt
+3 80 8 2

@@ -1,0 +1,5 @@
+Inventory/Item1.txt
+Inventory/Item2.txt
+Inventory/Item3.txt
+Inventory/Item4.txt
+Inventory/Item5.txt

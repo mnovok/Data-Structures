@@ -1,0 +1,3 @@
+Mercy
+Heals player 10% of their remaining health.
+1

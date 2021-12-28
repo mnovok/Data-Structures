@@ -1,0 +1,3 @@
+Trickster
+Tricks the enemy into attacking themselves. (70% success rate, otherwise attacks player double the amount)
+3
