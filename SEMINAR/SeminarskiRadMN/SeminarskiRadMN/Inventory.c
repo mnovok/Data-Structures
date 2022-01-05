@@ -98,7 +98,7 @@ int CreateItemsList(Item head) {
 	if (fp == NULL)
 	{
 		system("color C"); perror("\nLoading file failure. . .\n");
-		system("pause > nul");
+		printf("\n>>------>"); system("pause > nul");
 		return FILE_NOT_OPENED;
 	}
 
@@ -128,7 +128,7 @@ Item CreateItemFromFile(char* fileName) {
 	if (fp == NULL)
 	{
 		system("color C"); perror("\nLoading file failure. . .\n");
-		system("pause > nul");
+		printf("\n>>------>"); system("pause > nul");
 		return NULL;
 	}
 
@@ -153,11 +153,11 @@ int PrintAllItems(Item head) {
 
 	Item temp = head->next;
 
-	printf("\nSlot\tName\t Description\n\n");
+	printf("\nSlot\tName\tDescription\n\n");
 
 	while (temp != NULL)
 	{
-		printf("\n%d\t%s\t%s\n", temp->index, temp->name, temp->description);
+		printf("\n%d\t%s\t%s\n\n", temp->index, temp->name, temp->description);
 		temp = temp->next;
 	}
 

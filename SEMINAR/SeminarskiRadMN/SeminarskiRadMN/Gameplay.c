@@ -16,7 +16,7 @@
 
 int Game(Player currentPlayer, Save loadedSave) {
 
-    system("cls");
+    system("cls"); printf("\nL o a d i n g . . .\n\n");
 
     DisplayStatus(currentPlayer);
 
@@ -53,10 +53,11 @@ int Game(Player currentPlayer, Save loadedSave) {
     CreateItemsList(ItemHead);
     PrintAllItems(ItemHead);
 
+    //PrintSaveFiles(SaveHead);
 
-    PrintSaveFiles(SaveHead);
+    printf("\nEverything loaded successfully! How sweet!\n");
 
-    system("pause");
+    printf("\n>>------>"); system("pause > nul");
 
     EnterWorld(currentPlayer, SaveHead, VillainHead, SquareHead, InventoryHead, ItemHead);
 
@@ -67,12 +68,13 @@ int Game(Player currentPlayer, Save loadedSave) {
 int EnterWorld(Player currentPlayer, Save currentSaveHead, Villain currentVillainHead, Square currentBoardHead,  Item currentInventoryHead, Item currentItemsHead) {
 
     system("color d"); system("cls");
-    printf("\nWelcome to the Linked Land of Loo!\n");
+    printf("\nW E L C O M E  T O  L I N K E D  L A N D  L O O !\n\n");
     printf("\nOn your endless journey, you will face nine different villains at nine possible locations!\n\n");
-    printf("\nYou can also store up to two items in your mini backpack!\n");
+    printf("\nYou can also store up to two items in your mini backpack!\n\n");
+    DisplayASCII("Art/LinkedLandLoo.txt"); printf("\n");
     printf("\nGood luck %s!\n", currentPlayer->name);
 
-    system("pause");
+    printf("\n>>------>"); system("pause > nul");
 
     int fight = 0;
 
@@ -80,13 +82,13 @@ int EnterWorld(Player currentPlayer, Save currentSaveHead, Villain currentVillai
     
     PlayerStructure originalPlayer = *currentPlayer;
     
-    PrintSquare(currentBoardHead, currentPosition);
+    //PrintSquare(currentBoardHead, currentPosition);
 
     while (1) {
 
-        system("color d"); system("cls");
+        system("color d"); system("cls"); puts("");
 
-        PrintMap(currentBoardHead);
+        PrintMap(currentBoardHead); puts("");
 
         PrintSquare(currentBoardHead, currentPosition);
 
@@ -133,7 +135,7 @@ int EnterWorld(Player currentPlayer, Save currentSaveHead, Villain currentVillai
                         InventoryIsFull(currentInventoryHead, currrentItem);
                     else
                         AddItem(currentInventoryHead, currrentItem);
-                    system("pause");
+                    printf("\n>>------>"); system("pause > nul");
                     break;
 
                 }
@@ -147,7 +149,7 @@ int EnterWorld(Player currentPlayer, Save currentSaveHead, Villain currentVillai
             VillainStructure originalVillain = *currentVillain;
             system("color 4");
             printf("\n\n%s has appeared! You must defeat them!\n", currentVillain->name);
-            system("pause");
+            printf("\n>>------>"); system("pause > nul");
 
             fight = FightVillain(originalPlayer, originalVillain, currentInventoryHead);
 
@@ -166,7 +168,7 @@ int EnterWorld(Player currentPlayer, Save currentSaveHead, Villain currentVillai
                 currentVillain->defense += 1;
                 printf("\nOh no! %s has gotten stronger. . .\n", currentVillain->name);
             }       
-            system("pause");
+            printf("\n>>------>"); system("pause > nul");
         }
     }
 
@@ -242,17 +244,17 @@ int FightVillain(PlayerStructure currentPlayer, VillainStructure currentVillain,
             if (SetRandomValue(0, 200) >= SetRandomValue(0, 40))
             {            
                 Villain.health -= Player.attack;
-                printf("Attacking!\n%s has lost %d HP!\n", Villain.name, Player.attack);
+                printf("\nAttacking!\n%s has lost %d HP!\n", Villain.name, Player.attack);
             }
 
             else 
-                printf("Attacking!\n%s uses defense and has dodged the attack!\n", Villain.name);
+                printf("\nAttacking!\n%s uses defense and has dodged the attack!\n", Villain.name);
            
             puts("");
-            system("pause");
+            system("pause > nul");
             puts("");
 
-            if (Player.luck < SetRandomValue(0, 300))
+            if (Player.luck > SetRandomValue(80, 100))
             {
                 int hp = 0;
 
@@ -261,30 +263,35 @@ int FightVillain(PlayerStructure currentPlayer, VillainStructure currentVillain,
 
                 if (Player.defense > Villain.attack)
                 {
-                    hp = Villain.attack - 0.5*Player.defense;
-                    Player.health -= hp;
+                    hp = Player.defense - Villain.attack;
+                    if (hp == 0)
+                        hp = 1;
+                    Player.health -= hp;       
                 }
 
                 printf("Getting attacked!\n%s has lost %d HP!\n", Player.name, hp);
             }
 
             else
-                printf("%s has luckily dodged the attack!\n", Player.name);
+            {
+                Player.health -= Villain.attack;
+                printf("Getting attacked!%s has lost %d HP!\n", Player.name, Villain.attack);
+            }
 
-            system("pause");
+            system("pause > nul");
             break;
 
         case 2:
             if (Player.luck < SetRandomValue(0, 200))
             {
                 printf("%s has dodged %s's attack!\n", Player.name, Villain.name);
-                system("pause");
+                system("pause > nul");
             }
             else
             {
                 Player.health -= Villain.attack;
                 printf("Defense failed! %s has taken %d damage!\n", Player.name, Villain.attack);
-                system("pause");
+                system("pause > nul");
             }
             break;
 
@@ -310,7 +317,7 @@ int FightVillain(PlayerStructure currentPlayer, VillainStructure currentVillain,
                         Player.health += hp;
                         printf("Mercy from above! %s has restored %d HP\n", Player.name, hp);
                         EmptyItem(currentInventory, option_2); 
-                        system("pause"); puts("");
+                        system("pause > nul"); puts("");
                         Player.health -= Villain.attack;
                         printf("Getting attacked! %s has taken %d damage!\n", Player.name, Villain.attack); system("pause");
                         break;
@@ -319,7 +326,7 @@ int FightVillain(PlayerStructure currentPlayer, VillainStructure currentVillain,
                         Villain.health -= (2 * Player.attack);
                         printf("Lightning strike! %s has lost %d HP!\n", Villain.name, 2 * Player.attack);
                         EmptyItem(currentInventory, option_2);
-                        system("pause"); puts("");
+                        system("pause > nul"); puts("");
                         Player.health -= Villain.attack;
                         printf("Getting attacked! %s has taken %d damage!\n", Player.name, Villain.attack); system("pause");
                         break;
@@ -330,7 +337,7 @@ int FightVillain(PlayerStructure currentPlayer, VillainStructure currentVillain,
                             Villain.health -= Player.attack;
                             printf("Attacking! %s has lost %d HP!\n", Villain.name, Player.attack);
                             EmptyItem(currentInventory, option_2);
-                            system("pause"); puts("");
+                            system("pause > nul"); puts("");
                             Villain.health -= Villain.attack;
                             printf("Ha ha ha! %s really attacked THEMSELVES and lost %d HP!\n", Villain.name, Villain.attack);
                         }
@@ -340,11 +347,11 @@ int FightVillain(PlayerStructure currentPlayer, VillainStructure currentVillain,
                             Villain.health -= Player.attack;
                             printf("Attacking! %s has lost %d HP!\n", Villain.name, Player.attack);
                             EmptyItem(currentInventory, option_2);
-                            system("pause"); puts("");
+                            system("pause > nul"); puts("");
                             Player.health -= (2 * Player.attack);
                             printf("Silly %s attacked themselves by mistake and lost %d HP!\n", Player.name, 2 * Player.attack);
                         }
-                        system("pause");
+                        system("pause > nul");
                         break;
 
                     case 4:
@@ -354,7 +361,7 @@ int FightVillain(PlayerStructure currentPlayer, VillainStructure currentVillain,
                         Villain.health -= Player.attack;
                         printf("Attacking! %s has lost %d HP!\n", Villain.name, Player.attack);
                         EmptyItem(currentInventory, option_2);
-                        system("pause"); puts("");
+                        system("pause > nul"); puts("");
                         Player.health -= Villain.attack;
                         printf("Getting attacked! %s has lost %d HP!\n", Player.name, Villain.attack);  system("pause");
                         break;
@@ -371,7 +378,7 @@ int FightVillain(PlayerStructure currentPlayer, VillainStructure currentVillain,
                             printf("Tough luck! %s has lost half of their HP!\n", Player.name);
                         }
                         EmptyItem(currentInventory, option_2);
-                        system("pause");
+                        system("pause > nul");
                         break;
                     }
                 }
@@ -380,7 +387,7 @@ int FightVillain(PlayerStructure currentPlayer, VillainStructure currentVillain,
 
         default:
             system("color C");
-            printf("Please choose something from the menu . . .\n"); system("pause");
+            printf("Please choose something from the menu . . .\n"); system("pause > nul");
             break;
 
         }
@@ -390,7 +397,7 @@ int FightVillain(PlayerStructure currentPlayer, VillainStructure currentVillain,
     {
         system("color A");
         printf("\n%s has successfully defeated %s!\n", Player.name, Villain.name);
-        system("pause");
+        printf("\n>>------>"); system("pause > nul");;
         return EXIT_SUCCESS;
 
     }
@@ -399,7 +406,7 @@ int FightVillain(PlayerStructure currentPlayer, VillainStructure currentVillain,
     {
         system("color C");
         printf("\n%s has been defeated by %s. . .\n", Player.name, Villain.name);
-        system("pause");
+        printf("\n>>------>"); system("pause > nul");
         return EXIT_FAILURE;
     }
 }
@@ -435,7 +442,6 @@ int LoadedGame() {
 
     int item1 = 0, item2 = 0; //indeksi spremljenih itemsa
     int choice = 4;
-
 
     Save save1 = SaveHead->next;
     Save save2 = SaveHead->next->next;
@@ -474,7 +480,7 @@ int LoadedGame() {
             else
             {
                 system("color C"); printf("That save file is empty!\nChoose another one or go back to main menu. . .\n");
-                system("pause");
+                printf("\n>>------>"); system("pause > nul");
                 break;
             }
         
@@ -493,7 +499,7 @@ int LoadedGame() {
             else
             {
                 system("color C"); printf("That save file is empty!\nChoose another one or go back to main menu. . .\n");
-                system("pause");
+                printf("\n>>------>"); system("pause > nul");
                 break;
             }
         
@@ -512,7 +518,7 @@ int LoadedGame() {
             else
             {
                 system("color C"); printf("That save file is empty!\nChoose another one or go back to main menu. . .\n");
-                system("pause");
+                printf("\n>>------>"); system("pause > nul");
                 break;
             }
 
@@ -522,13 +528,13 @@ int LoadedGame() {
         
         default:
             system("color C");
-            printf("Please choose something from the menu . . .\n"); system("pause");
+            printf("Please choose something from the menu . . .\n"); printf("\n>>------>"); system("pause > nul");
             break;
 
         }
     }
 
-    system("pause");
+    printf("\n>>------>"); system("pause > nul");
 
     return EXIT_SUCCESS;
 }

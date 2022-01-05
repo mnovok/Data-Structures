@@ -182,7 +182,9 @@ int WriteSaveIntoFile(Save currentSave, char* fileName) {
 		fprintf(fp, "%s %s %d %d %d %d\n", currentPlayer->name, currentPlayer->class, currentPlayer->health, currentPlayer->attack, currentPlayer->defense, currentPlayer->luck);
 		while (i < 10)
 		{
-			fprintf(fp, "%s, %s %d %d %d %d\n", villain->name, villain->fileName, villain->health, villain->attack, villain->defense, villain->index);
+			fprintf(fp, "%s, %s %d %d %d %d", villain->name, villain->fileName, villain->health, villain->attack, villain->defense, villain->index);
+			if (villain->next)
+				fprintf(fp, "\n");
 			i++;
 			villain = villain->next;
 		}
@@ -216,7 +218,7 @@ int LoadSave(Save temp,  int* item1, int* item2, Villain currentVillainHead, cha
 
 	else
 	{
-		rewind(fp); //na pocetak datoteke
+		//rewind(fp); //na pocetak datoteke
 
 		fgets(buffer, MAX_LINE_LENGTH, fp); //naziv datoteke
 		strtok(buffer, "\n");
@@ -232,7 +234,8 @@ int LoadSave(Save temp,  int* item1, int* item2, Villain currentVillainHead, cha
 		{ 
 			fgets(buffer, MAX_LINE_LENGTH, fp);
 			villainLine = sscanf(buffer, "%[^,], %s %d %d %d %d", villain1->name, villain1->fileName, &villain1->health, &villain1->attack, &villain1->defense, &villain1->index);
-			villain1 = villain1->next;
+			if(villainLine == 6)
+				villain1 = villain1->next;
 		}
 	}
 

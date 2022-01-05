@@ -33,7 +33,7 @@ int CreateBoard(Square head, char* fileName) {
 	if (fp == NULL)
 	{
 		system("color C"); perror("\nLoading file failure. . .\n");
-		system("pause > nul");
+		printf("\n>>------>"); system("pause > nul");
 		return FILE_NOT_OPENED;
 	}
 
@@ -75,7 +75,7 @@ int CreateBoard(Square head, char* fileName) {
 	fclose(fp);
 
 	system("color A");
-	printf("Map successfully read!\n");
+	printf("\nMap successfully read!\n\n");
 
 	return EXIT_SUCCESS;
 
@@ -90,7 +90,7 @@ Square CreateSquare() {
 	if (!tempSquare)
 	{
 		system("color C"); perror("\nMemory allocation failure. . .\n");
-		system("pause > nul");
+		printf("\n>>------>"); system("pause > nul");
 		return NULL;
 	}
 
@@ -128,11 +128,11 @@ int PrintMap(Square head) {
 int PrintSquare(Square head, Square currentPosition) {
 
 
-	printf("\nYour current position is at:\t%s\n", currentPosition->name);
+	printf("\nYour current position is at:\t%s\n\n", currentPosition->name);
 
-	printf("\t[ 0 ] Escape menu\n");
-	printf("\t[ 1 ] Go right to:\t%s\n", currentPosition->right->name);
-	printf("\t[ 2 ] Go down to:\t%s\n\n", currentPosition->down->name);
+	printf("\t[ 0 ] Escape menu\n"); puts("");
+	printf("\t[ 1 ] Go right to:\t%s\n", currentPosition->right->name); puts("");
+	printf("\t[ 2 ] Go down  to:\t%s\n\n", currentPosition->down->name); puts("");
 
 	return EXIT_SUCCESS;
 }

@@ -35,7 +35,7 @@ Player CreatePlayer(int classNumber, char name[MAX_NAME]) {
 	switch (classNumber) {
 
 	case 1: //warrior
-		currentPlayer->health = 70;
+		currentPlayer->health = 90;
 		currentPlayer->attack = 10;
 		currentPlayer->defense = 6;
 		strcpy(currentPlayer->class, "Warrior");
@@ -43,7 +43,7 @@ Player CreatePlayer(int classNumber, char name[MAX_NAME]) {
 		break;
 
 	case 2: //mage
-		currentPlayer->health = 70;
+		currentPlayer->health = 80;
 		currentPlayer->attack = 4;
 		currentPlayer->defense = 10;
 		strcpy(currentPlayer->class, "Mage");
@@ -111,7 +111,7 @@ Player ReadCustomPlayer(char* fileName) {
 	if (fp == NULL)
 	{
 		system("color C"); perror("\nLoading file failure. . .\n");
-		system("pause > nul");
+		printf("\n>>------>"); system("pause > nul");
 		return NULL;
 	}
 
@@ -120,7 +120,7 @@ Player ReadCustomPlayer(char* fileName) {
 	if (!customPlayer) 
 	{
 		system("color C"); perror("\nMemory allocation failure. . .\n");
-		system("pause > nul");
+		printf("\n>>------>"); system("pause > nul");
 		return NULL;
 	}
 
@@ -148,14 +148,14 @@ Player ReadCustomPlayer(char* fileName) {
 	{
 		system("color A"); //zeleno za uspjesnost
 		printf("\nFile %s successfully read!\n\n", fileName);
-		system("pause > nul");
+		printf("\n>>------>"); system("pause > nul");
 	}
 
 	else
 	{
 		system("color C");
 		printf("\nFile %s not formatted correctly [Name class health attack defense luck]. . .\n", fileName);
-		system("pause"); fclose(fp);
+		printf("\n>>------>"); system("pause > nul"); fclose(fp);
 		return NULL;
 	}
 
@@ -177,7 +177,7 @@ char* EnterPlayerName() {
 
 	char* str = NULL;
 	str = malloc(sizeof(char) * MAX_NAME);
-	printf("\nPlease enter your character's name:\n\t> ");
+	printf("\nPlease enter your character's name:\n\n\t> ");
 	scanf(" %s", str);
 	strtok(str, "\n");
 	return str;

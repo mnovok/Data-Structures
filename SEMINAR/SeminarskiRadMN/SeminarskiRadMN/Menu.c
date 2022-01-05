@@ -33,7 +33,7 @@ int Intro(Player currentPlayer, Save loadedSave) {
 
     DisplayASCII("Art/Intro.txt");
 
-    system("pause"); system("cls"); system("color D");
+    printf("\n"); printf("\n>>------>"); system("pause > nul"); system("cls"); system("color D");
 
     while (choice != 4)
     {
@@ -63,7 +63,7 @@ int Intro(Player currentPlayer, Save loadedSave) {
         default:
             system("color C");
             printf("Please select something from the menu. . .\n");
-            system("pause");
+            printf("\n>>------>"); system("pause > nul");
             break;
         }
     }
@@ -80,11 +80,11 @@ Player ChooseClass() {
     system("cls");
     system("color 6");
 
-    printf("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n\n");
+    printf("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n\n");
     printf("\t\tDo you want to choose a class or upload your custom stats from a file?\n\n");
-    printf("\t\t[ 1 ] C h o o s e  a  c l a s s\n\n");
-    printf("\t\t[ 2 ] U p l o a d  a  c u s t o m  p l a y e r\n\n");
-    printf("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n\n");
+    printf("\t\t[ 1 ] C h o o s e  a  c l a s s\n\n"); puts("");
+    printf("\t\t[ 2 ] U p l o a d  a  c u s t o m  p l a y e r\n\n"); puts("");
+    printf("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n\n");
 
     printf("\n\n\n>\t ");
     scanf(" %d", &choice);
@@ -110,10 +110,10 @@ Player ChooseClass() {
     else
     {
         printf("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-++-+-+-+-+-+-+-+-+-+-+-+\n\n");
-        printf("\tNow, who do you wish to play as?\n\n");
-        printf("\t[ 1 ] W a r r i o r - focus on attack\n\n");
-        printf("\t[ 2 ] M a g e - focus on defense\n\n");
-        printf("\t[ 3 ] B e r s e r k e r - focus on HP\n\n");
+        printf("\tNow, who do you wish to play as?\n\n"); puts("");
+        printf("\t[ 1 ] W a r r i o r ........ focus on attack\n\n"); puts("");
+        printf("\t[ 2 ] M a g e .............. focus on defense\n\n"); puts("");
+        printf("\t[ 3 ] B e r s e r k e r .... focus on HP\n\n"); puts("");
         printf("\tAnything else results in playing as a mere human! Choose carefully!\n");
         printf("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-++-+-+-+-+-+-+-+-+-+-+-+\n\n");
 
@@ -126,7 +126,7 @@ Player ChooseClass() {
 
     system("cls");  system("color 6");
     DisplayStatus(currentPlayer);
-    system("pause");
+    printf("\n>>------>"); system("pause > nul");
 
     return currentPlayer;
 }
@@ -141,7 +141,7 @@ int DisplayASCII(char* fileName) {
     while (!feof(fp))
     {
         fgets(buffer, MAX_LINE_LENGTH, fp);
-        printf("%s\n", buffer);
+        printf("%s", buffer);
     }
 
     fclose(fp);
@@ -167,7 +167,7 @@ int Info() {
 
     DisplayASCII("Art/Info.txt");
 
-    system("pause");
+    printf("\n>>------>"); system("pause > nul");
 
     return EXIT_SUCCESS;
 }
@@ -202,7 +202,7 @@ Player ReenterFileName(Player currentPlayer, char* fileName) {
         else
         {
             system("color C"); printf("\nWrong command. . .\n");
-            system("pause");
+            printf("\n>>------>"); system("pause > nul");
         }
     }
 
@@ -214,6 +214,7 @@ int EscapeMenu(Save saveHead, Player currentPlayer, Villain currentVillainHead, 
     int choice = 0;
     int slot = 0;
     Save save = NULL;
+    save = CreateSave();
     int item1 = 0, item2 = 0;
    
     Save save1 = saveHead->next;
@@ -229,7 +230,7 @@ int EscapeMenu(Save saveHead, Player currentPlayer, Villain currentVillainHead, 
         LoadSave(save3, &item1, &item2, currentVillainHead, "Saves/Save3.txt");
 
 
-    while (choice != 3)
+    while (choice != 4)
     {
         system("cls");
         system("color D");
@@ -253,21 +254,21 @@ int EscapeMenu(Save saveHead, Player currentPlayer, Villain currentVillainHead, 
                   save = SavePlayer(currentPlayer, currentVillainHead, currentInventoryHead);
                   AddSaveFile(saveHead, save, save1);
                   WriteSaveIntoFile(save, "Saves/Save1.txt");
-                  system("pause");
+                  printf("\n>>------>"); system("pause > nul");
                 break;
 
             case 2:
                 save = SavePlayer(currentPlayer, currentVillainHead, currentInventoryHead);
                 AddSaveFile(saveHead, save, save2);
                 WriteSaveIntoFile(save, "Saves/Save2.txt");
-                system("pause");
+                printf("\n>>------>"); system("pause > nul");
                 break;
 
             case 3:
                 save = SavePlayer(currentPlayer, currentVillainHead, currentInventoryHead);
                 AddSaveFile(saveHead, save, save3);
                 WriteSaveIntoFile(save, "Saves/Save3.txt");
-                system("pause");
+                printf("\n>>------>"); system("pause > nul");
                 break;
             default:
                 system("color C");
@@ -276,19 +277,24 @@ int EscapeMenu(Save saveHead, Player currentPlayer, Villain currentVillainHead, 
             }
 
             break;
+
+        case 2: //load game
+            system("color d");
+            LoadedGame();
+            break;
         
-        case 2: //nastavi igru
-            choice = 3;
+        case 3: //nastavi igru
+            choice = 4;
             break;
 
-        case 3: //povratak na pocetak igre
-            choice = 3;
+        case 4: //povratak na pocetak igre
+            choice = 4;
             exit(0);
             break;
         default:
             system("color C");
             printf("Please select something from the menu. . .\n");
-            system("pause");
+            printf("\n>>------>"); system("pause > nul");
             break;
         }
     }

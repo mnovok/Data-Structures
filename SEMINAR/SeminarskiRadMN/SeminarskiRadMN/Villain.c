@@ -65,7 +65,7 @@ Villain CreateVillain(char* fileName) {
 
 int DisplayVillainStats(Villain villain) {
 
-	printf("%s\n+-+-+-+-+-+\nHP : %d\nATTACK : %d\nDEFENSE : %d\n", villain->name, villain->health, villain->attack, villain->defense);
+	printf("\n%s\n+-+-+-+-+-+\nHP : %d\nATTACK : %d\nDEFENSE : %d\n", villain->name, villain->health, villain->attack, villain->defense);
 
 	return EXIT_SUCCESS;
 }
@@ -82,7 +82,7 @@ int CreateVillainList(Villain head, char* fileName) {
 	if (fp == NULL)
 	{
 		system("color C"); perror("\nLoading file failure. . .\n");
-		system("pause > nul");
+		printf("\n>>------>"); system("pause > nul");
 		return FILE_NOT_OPENED;
 	}
 
@@ -113,7 +113,7 @@ int PrintVillains(Villain head) {
 
 	Villain first = head->next;
 
-	printf("Villains are:\n\n");
+	printf("\nVillains you shall meet:\n\n");
 
 	while (first)
 	{
