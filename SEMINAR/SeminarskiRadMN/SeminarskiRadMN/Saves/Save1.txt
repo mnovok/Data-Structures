@@ -1,6 +1,6 @@
-05-01-2022 10:19
-0 0
-Nora Berserker 108 10 8 53
+15-01-2022 22:35
+5 4
+Nora Berserker 118 15 13 53
 Bewitched Bunny, Art/Villains/BewitchedBunny.txt 90 7 4 1
 Furious Fish, Art/Villains/FuriousFish.txt 70 5 5 2
 Malicious Monkey, Art/Villains/MaliciousMonkey.txt 80 8 2 3

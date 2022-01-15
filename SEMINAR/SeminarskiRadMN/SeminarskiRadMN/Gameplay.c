@@ -80,13 +80,14 @@ int EnterWorld(Player currentPlayer, Save currentSaveHead, Villain currentVillai
 
     Square currentPosition = currentBoardHead->right;
     
-    PlayerStructure originalPlayer = *currentPlayer;
     
     //PrintSquare(currentBoardHead, currentPosition);
 
     while (1) {
 
         system("color d"); system("cls"); puts("");
+
+        PlayerStructure originalPlayer = *currentPlayer;
 
         PrintMap(currentBoardHead); puts("");
 
