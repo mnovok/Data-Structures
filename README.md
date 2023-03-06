@@ -1,3 +1,3 @@
 # Data Structures
 
-Lab worksfor course Data Structures @ FESB 2021
+Lab works for course Data Structures @ FESB 2021
